@@ -1,5 +1,6 @@
 import 'package:chatee/components/story.dart';
 import 'package:chatee/config/colors.dart';
+import 'package:chatee/data/user_story_data.dart';
 import 'package:flutter/material.dart';
 
 class ChatContactPage extends StatelessWidget {
@@ -15,39 +16,42 @@ class ChatContactPage extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: lightColor,
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(
-                              width: 1.3,
-                              color: buttonColor,
-                            ),
-                          ),
-                          child: Icon(Icons.add),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "Add story",
-                          style: Theme.of(context).textTheme.labelSmall,
-                        )
-                      ],
-                    ),
-                  ),
-                  StoryWidget(),
-                  StoryWidget(),
-                  StoryWidget(),
-                  StoryWidget(),
-                  StoryWidget(),
-                  StoryWidget(),
-                ],
+                children: storyData
+                    .map(
+                      (e) => StoryWidget(
+                        name: e.useName,
+                        isViewed: e.isViewed,
+                        profileUrl: e.profileUrl!,
+                      ),
+                    )
+                    .toList(),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 5),
+                //   child: Column(
+                //     children: [
+                //       Container(
+                //         width: 60,
+                //         height: 60,
+                //         decoration: BoxDecoration(
+                //           color: lightColor,
+                //           borderRadius: BorderRadius.circular(100),
+                //           border: Border.all(
+                //             width: 1.3,
+                //             color: buttonColor,
+                //           ),
+                //         ),
+                //         child: Icon(Icons.add),
+                //       ),
+                //       SizedBox(height: 5),
+                //       Text(
+                //         "Add story",
+                //         style: Theme.of(context).textTheme.labelSmall,
+                //       )
+                //     ],
+                //   ),
+                // ),
+
+                // ],
               ),
             )
           ]),

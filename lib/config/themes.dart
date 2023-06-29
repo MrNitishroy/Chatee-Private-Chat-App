@@ -37,25 +37,41 @@ final ThemeData lightTheme = ThemeData(
     onSecondaryContainer: lightTextColor, // for container text color
   ),
   textTheme: TextTheme(
-      headlineLarge: TextStyle(
-        fontSize: 40,
-        fontWeight: FontWeight.w600,
-        fontFamily: "Poppins",
-        color: lightTextColor,
-      ),
-      headlineMedium: TextStyle(
-        fontSize: 15,
-        fontWeight: FontWeight.w400,
-        fontFamily: "Poppins",
-        color: lightColor,
-        letterSpacing: 1.2,
-      ),
-      labelSmall: TextStyle(
-        fontSize: 13,
-        fontWeight: FontWeight.w400,
-        fontFamily: "Poppins",
-        color: lightTextColor,
-      )),
+    headlineLarge: TextStyle(
+      fontSize: 40,
+      fontWeight: FontWeight.w600,
+      fontFamily: "Poppins",
+      color: lightTextColor,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      fontFamily: "Poppins",
+      color: lightColor,
+      letterSpacing: 1.2,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 20,
+      fontFamily: "Poppins",
+      fontWeight: FontWeight.w500,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w400,
+      fontFamily: "Poppins",
+      color: lightTextColor,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 15,
+      color: lightTextColor,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+      fontFamily: "Poppins",
+      color: lightLableColor,
+    ),
+  ),
 );
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,

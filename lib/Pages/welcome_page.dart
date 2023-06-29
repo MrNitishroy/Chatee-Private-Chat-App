@@ -11,44 +11,51 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Enjoy Your",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                Text(
-                  "Comunnication",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "With",
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      "Chatee",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge
-                          ?.copyWith(color: buttonColor),
-                    ),
-                  ],
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Enjoy Your",
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                  Text(
+                    "Comunnication",
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "With",
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        "Chatee",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge
+                            ?.copyWith(color: buttonColor),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            CustomeButton(
-              btnName: "Let's Started",
-              onTap: () {
-                Get.toNamed("/chat-contact-page");
-              },
+            Image.asset("assets/images/welcome.png"),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: CustomeButton(
+                btnName: "Let's Started",
+                onTap: () {
+                  Get.toNamed("/login-page");
+                },
+              ),
             ),
           ],
         ),

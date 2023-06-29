@@ -12,11 +12,11 @@ class CustomeButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 50,
+        height: 55,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
         decoration: BoxDecoration(
-          color: buttonColor,
-          borderRadius: BorderRadius.circular(50),
+          color: buttonColor1,
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

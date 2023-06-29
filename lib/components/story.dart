@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import '../config/colors.dart';
 
 class StoryWidget extends StatelessWidget {
-  const StoryWidget({super.key});
+  final String? name;
+  final bool? isViewed;
+  final String profileUrl;
+  const StoryWidget({
+    super.key,
+    this.name,
+    this.isViewed,
+    required this.profileUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +32,14 @@ class StoryWidget extends StatelessWidget {
                   color: buttonColor,
                 ),
               ),
+              child: Image.network(
+                profileUrl!,
+                fit: BoxFit.cover,
+              ),
             ),
             SizedBox(height: 5),
             Text(
-              "Add story",
+              name.toString(),
               style: Theme.of(context).textTheme.labelSmall,
             )
           ],

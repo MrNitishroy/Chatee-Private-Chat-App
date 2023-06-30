@@ -4,6 +4,7 @@ import 'package:chatee/config/colors.dart';
 import 'package:chatee/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
@@ -19,85 +20,55 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: [
               MyBackButton(),
-              SizedBox(height: 50),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Enter Your Number",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
+              SizedBox(height: 30),
+              Image.asset(
+                'assets/logo.png',
+                width: 200,
               ),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  Text(
-                    "Mobile Number",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
+              Text(
+                "Welcome to",
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
-              SizedBox(height: 10),
-              TextFormField(
-                controller: authController.mobileNumber,
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.4,
-                ),
-                keyboardType: TextInputType.number,
-                inputFormatters: [
-                  LengthLimitingTextInputFormatter(10),
-                ],
-                decoration: InputDecoration(
-                  fillColor: Theme.of(context).colorScheme.primaryContainer,
-                  filled: true,
-                  hintText: "0000000000",
-                  hintStyle: TextStyle(
-                    fontFamily: "Poppins",
-                    fontSize: 20,
-                  ),
-                  prefix: Container(
-                    decoration: BoxDecoration(),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      "+91",
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "We will send you six digit \n of OTP to verify you number",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                ],
+              Text(
+                "Chatee",
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(color: buttonColor),
               ),
               Spacer(),
-              CustomeButton(
-                btnName: "Next",
-                onTap: () {
-                  // authController.signupEmail();
-                  // authController.mobileNumberLogin();
-                  Get.toNamed("/otp-page");
-                },
+              Obx(
+                () => InkWell(
+                  onTap: () {
+                    authController.googleLogin();
+                  },
+                  child: Container(
+                    height: 60,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: authController.isLoading.value
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: buttonColor,
+                            ),
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset("assets/logo/google.svg",
+                                  color: Theme.of(context).colorScheme.primary),
+                              SizedBox(width: 30),
+                              Text(
+                                "Sign in with Google",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
               )
             ],
           ),

@@ -1,17 +1,14 @@
-import 'package:chatee/controller/profile_controller.dart';
+import 'package:chatee/config/colors.dart';
+import 'package:chatee/controller/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../config/colors.dart';
-import '../controller/auth_controller.dart';
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class UserProfilePage extends StatelessWidget {
+  const UserProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
-    ProfileController profileController = Get.put(ProfileController());
+    ThemeController themeController = Get.put(ThemeController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -35,7 +32,7 @@ class ProfilePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10),
-          child: ListView(
+          child: Column(
             children: [
               SizedBox(
                 height: 50,
@@ -69,7 +66,7 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    authController.auth.currentUser!.displayName!,
+                    "Saloni Kumari",
                     style: Theme.of(context).textTheme.bodyLarge,
                   )
                 ],
@@ -96,50 +93,43 @@ class ProfilePage extends StatelessWidget {
                 thickness: 1.5,
               ),
               Container(
-                  // margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Obx(
-                    () => Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.alternate_email_rounded),
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
-                        Expanded(
-                          child: TextFormField(
-                            enabled: profileController.isEmailEnable.value,
-                            controller: profileController.email,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onBackground,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 1.0,
-                            ),
-                            maxLines: 10,
-                            minLines: 1,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Add Email",
-                              hintStyle: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            profileController.onEmailUpdate();
-                          },
-                          icon: profileController.isEmailEnable.value
-                              ? Icon(Icons.done)
-                              : Icon(Icons.edit),
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
-                      ],
+                // margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.alternate_email_rounded),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
-                  )),
+                    Expanded(
+                      child: TextFormField(
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 1.0,
+                        ),
+                        maxLines: 10,
+                        minLines: 1,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Add Email",
+                          hintStyle: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.edit),
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(height: 10),
               Container(
                 // margin: EdgeInsets.all(10),
@@ -181,9 +171,6 @@ class ProfilePage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               ListTile(
-                onTap: () {
-                  authController.logOut();
-                },
                 leading: Icon(
                   Icons.logout,
                   color: Theme.of(context).colorScheme.onBackground,
@@ -194,21 +181,24 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              ListTile(
-                leading: Icon(
-                  Icons.dark_mode_rounded,
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
-                title: Text(
-                  "Dark Theme",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                trailing: Switch(
-                  value: false,
-                  onChanged: (value) {},
-                  activeColor: buttonColor,
-                ),
-              )
+              Obx(() => ListTile(
+                    leading: Icon(
+                      Icons.dark_mode_rounded,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+                    title: Text(
+                      "Dark Theme",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    trailing: Switch(
+                      value: themeController.isDark.value,
+                      onChanged: (value) {
+                        themeController.isDark.value = value;
+                        // themeController.changeTheme();
+                      },
+                      activeColor: buttonColor,
+                    ),
+                  ))
             ],
           ),
         ),

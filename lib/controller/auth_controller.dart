@@ -19,8 +19,6 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
-
-
   void googleLogin() async {
     try {
       isLoading.value = true;
@@ -55,5 +53,12 @@ class AuthController extends GetxController {
       codeSent: (String verificationId, int? resendToken) {},
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
+  }
+
+  void logOut() async {
+    await googleSignIn.disconnect();
+    await googleSignIn.signOut();
+    await auth.signOut();
+    Get.offAllNamed('/welcome-page');
   }
 }

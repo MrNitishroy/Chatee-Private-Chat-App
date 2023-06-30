@@ -29,7 +29,9 @@ class ChatContactPage extends StatelessWidget {
             color: lightColor,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed("/profile-page");
+            },
             icon: Icon(Icons.more_vert),
             color: lightColor,
           ),

@@ -1,6 +1,7 @@
 import 'package:chatee/components/back_button.dart';
 import 'package:chatee/components/button.dart';
 import 'package:chatee/config/colors.dart';
+import 'package:chatee/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -42,6 +44,7 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               TextFormField(
+                controller: authController.mobileNumber,
                 style: TextStyle(
                   fontFamily: "Poppins",
                   fontSize: 20,
@@ -66,7 +69,7 @@ class LoginPage extends StatelessWidget {
                     child: Text(
                       "+91",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ),
@@ -91,6 +94,8 @@ class LoginPage extends StatelessWidget {
               CustomeButton(
                 btnName: "Next",
                 onTap: () {
+                  // authController.signupEmail();
+                  // authController.mobileNumberLogin();
                   Get.toNamed("/otp-page");
                 },
               )

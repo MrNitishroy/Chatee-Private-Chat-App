@@ -25,16 +25,16 @@ class StoryWidget extends StatelessWidget {
               width: 60,
               height: 60,
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(profileUrl!),
+                  fit: BoxFit.cover,
+                ),
                 color: lightColor,
                 borderRadius: BorderRadius.circular(100),
                 border: Border.all(
                   width: 1.3,
                   color: buttonColor,
                 ),
-              ),
-              child: Image.network(
-                profileUrl!,
-                fit: BoxFit.cover,
               ),
             ),
             SizedBox(height: 5),

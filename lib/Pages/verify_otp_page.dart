@@ -3,6 +3,7 @@ import 'package:chatee/components/button.dart';
 import 'package:chatee/config/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class VerifyOtpPage extends StatelessWidget {
   const VerifyOtpPage({super.key});
@@ -105,7 +106,9 @@ class VerifyOtpPage extends StatelessWidget {
                 width: 200,
                 child: CustomeButton(
                   btnName: "Verify",
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed("/chat-contact-page");
+                  },
                 ),
               )
             ],

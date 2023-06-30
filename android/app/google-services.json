@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "750204028355",
+    "project_id": "private-chat-app-chatee",
+    "storage_bucket": "private-chat-app-chatee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750204028355:android:595fc69cbe27cabf612976",
+        "android_client_info": {
+          "package_name": "com.example.chatee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750204028355-no5vvlsp7kvp9ir38fc5f01lkefu9fm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwlHfjH3UkV-SCdtTXDJRECKgn_6Jqn4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750204028355-no5vvlsp7kvp9ir38fc5f01lkefu9fm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

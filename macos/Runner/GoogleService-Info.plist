@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>824340566259-8l0hc8arg1e90n2rhmn2l6mhcb37p9q5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.824340566259-8l0hc8arg1e90n2rhmn2l6mhcb37p9q5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBPJiusKsdyex79ulmxnKpFGDf6Oldn2Hs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>824340566259</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.chatee.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>chatee-private-chat-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chatee-private-chat-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:824340566259:ios:ee4fa8e52c2052f8fde786</string>
+</dict>
+</plist>

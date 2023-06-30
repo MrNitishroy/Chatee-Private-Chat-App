@@ -8,6 +8,8 @@ final lightDivColor = Color(0xffdee9f5);
 final lightLableColor = Color(0xffBABABA);
 
 // common color
+final chatBgColor = Color(0xffCBE4FF);
+final darkChatBgColor = Color(0xff555555);
 
 final buttonColor1 = Color(0xff5a61ff);
 final buttonColor2 = Color(0xff6168ff);

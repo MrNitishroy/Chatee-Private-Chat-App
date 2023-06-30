@@ -19,6 +19,8 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
+
+
   void googleLogin() async {
     try {
       isLoading.value = true;
@@ -43,5 +45,15 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  void loginWithMobileNumber() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+917033161175',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
   }
 }

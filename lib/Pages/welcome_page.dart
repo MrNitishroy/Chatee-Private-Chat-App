@@ -3,11 +3,14 @@ import 'package:chatee/config/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controller/splace_controller.dart';
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SplaceController splaceController = Get.put(SplaceController());
     return Scaffold(
         body: SafeArea(
       child: Padding(

@@ -95,7 +95,7 @@ class LoginWithPhoneNumber extends StatelessWidget {
                 btnName: "Next",
                 onTap: () {
                   // authController.signupEmail();
-                  // authController.mobileNumberLogin();
+                  authController.loginWithMobileNumber();
                   Get.toNamed("/otp-page");
                 },
               )

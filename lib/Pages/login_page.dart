@@ -70,14 +70,14 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              CustomeButton(
-                btnName: "Next",
-                onTap: () {
-                  // authController.signupEmail();
-                  // authController.mobileNumberLogin();
-                  Get.toNamed("/login-with-phone");
-                },
-              )
+              // CustomeButton(
+              //   btnName: "Next",
+              //   onTap: () {
+              //     // authController.signupEmail();
+              //     // authController.mobileNumberLogin();
+              //     Get.toNamed("/login-with-phone");
+              //   },
+              // )
             ],
           ),
         ),

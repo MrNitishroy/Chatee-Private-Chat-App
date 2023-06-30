@@ -20,24 +20,6 @@ class AuthController extends GetxController {
   }
 
   void googleLogin() async {
-    final googleUser = await googleSignIn.signIn();
-
-    if (googleUser == null) {
-      return;
-    } else {
-      user = googleUser;
-    }
-
-    final googleAuth = await googleUser!.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    await auth.signInWithCredential(credential);
-  }
-
-  void googleLogin1() async {
     try {
       isLoading.value = true;
       GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>824340566259-kttd74e27ikckg832alaungc28g7q4gl.apps.googleusercontent.com</string>
+	<string>483803846444-19cme9ildpmkoo10bgetocst94gacqu5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.824340566259-kttd74e27ikckg832alaungc28g7q4gl</string>
+	<string>com.googleusercontent.apps.483803846444-19cme9ildpmkoo10bgetocst94gacqu5</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBPJiusKsdyex79ulmxnKpFGDf6Oldn2Hs</string>
+	<string>AIzaSyAUFHHVi7hChIY9Vh6pZa3qMeS5Qfry4_E</string>
 	<key>GCM_SENDER_ID</key>
-	<string>824340566259</string>
+	<string>483803846444</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.chatee</string>
 	<key>PROJECT_ID</key>
-	<string>chatee-private-chat-app</string>
+	<string>chatee-privatechat</string>
 	<key>STORAGE_BUCKET</key>
-	<string>chatee-private-chat-app.appspot.com</string>
+	<string>chatee-privatechat.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:824340566259:ios:7ccd601dc9c55449fde786</string>
+	<string>1:483803846444:ios:6fca9a97a00b512123be89</string>
 </dict>
 </plist>

@@ -44,39 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA9N3A8W6g-ThwdeHqIn4GBkuzERxnbl94',
-    appId: '1:664142919571:web:095ed842fadf17c14b9a66',
-    messagingSenderId: '664142919571',
-    projectId: 'private-room-chate',
-    authDomain: 'private-room-chate.firebaseapp.com',
-    storageBucket: 'private-room-chate.appspot.com',
+    apiKey: 'AIzaSyBnkA4bKsGmzSzyH0LvKphF4cryHD6gwi8',
+    appId: '1:483803846444:web:de910f4bdc8cd55623be89',
+    messagingSenderId: '483803846444',
+    projectId: 'chatee-privatechat',
+    authDomain: 'chatee-privatechat.firebaseapp.com',
+    storageBucket: 'chatee-privatechat.appspot.com',
+    measurementId: 'G-Y5KHWWZV1W',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCi0bxqnVPwZJEcd1JqoW5NZELHqEffPPA',
-    appId: '1:664142919571:android:0add5846fa2d112d4b9a66',
-    messagingSenderId: '664142919571',
-    projectId: 'private-room-chate',
-    storageBucket: 'private-room-chate.appspot.com',
+    apiKey: 'AIzaSyCbFA_gRPwmudkHMgWRF_dFsX1w6Vy1YPQ',
+    appId: '1:483803846444:android:f910ff28956a973123be89',
+    messagingSenderId: '483803846444',
+    projectId: 'chatee-privatechat',
+    storageBucket: 'chatee-privatechat.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyADbr1y1sxJhafBV5Q_V7DiX3CCdHga0-8',
-    appId: '1:664142919571:ios:8bb83cef07c8c44f4b9a66',
-    messagingSenderId: '664142919571',
-    projectId: 'private-room-chate',
-    storageBucket: 'private-room-chate.appspot.com',
-    iosClientId: '664142919571-hp0s8ij2tunco946uaa027jgdt3fdr54.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAUFHHVi7hChIY9Vh6pZa3qMeS5Qfry4_E',
+    appId: '1:483803846444:ios:6fca9a97a00b512123be89',
+    messagingSenderId: '483803846444',
+    projectId: 'chatee-privatechat',
+    storageBucket: 'chatee-privatechat.appspot.com',
+    iosClientId: '483803846444-19cme9ildpmkoo10bgetocst94gacqu5.apps.googleusercontent.com',
     iosBundleId: 'com.example.chatee',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyADbr1y1sxJhafBV5Q_V7DiX3CCdHga0-8',
-    appId: '1:664142919571:ios:e4fdf0bb5d3853bf4b9a66',
-    messagingSenderId: '664142919571',
-    projectId: 'private-room-chate',
-    storageBucket: 'private-room-chate.appspot.com',
-    iosClientId: '664142919571-8ll02gt83knikhghuu9l424b5g6tib15.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAUFHHVi7hChIY9Vh6pZa3qMeS5Qfry4_E',
+    appId: '1:483803846444:ios:9dcbdec611c73a4d23be89',
+    messagingSenderId: '483803846444',
+    projectId: 'chatee-privatechat',
+    storageBucket: 'chatee-privatechat.appspot.com',
+    iosClientId: '483803846444-lj0hkvor9g3a6ctrg8qol9fvtahs4d83.apps.googleusercontent.com',
     iosBundleId: 'com.example.chatee.RunnerTests',
   );
 }

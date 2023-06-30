@@ -1,6 +1,7 @@
 import 'package:chatee/Pages/chat_contact_page.dart';
 import 'package:chatee/Pages/home_page.dart';
 import 'package:chatee/Pages/login_page.dart';
+import 'package:chatee/Pages/login_with_phone.dart';
 import 'package:chatee/Pages/profile_page.dart';
 import 'package:chatee/Pages/verify_otp_page.dart';
 import 'package:chatee/Pages/welcome_page.dart';
@@ -22,6 +23,11 @@ var pageRoutes = [
   GetPage(
     name: "/login-page",
     page: () => const LoginPage(),
+    transition: Transition.rightToLeft,
+  ),
+  GetPage(
+    name: "/login-with-phone",
+    page: () => const LoginWithPhoneNumber(),
     transition: Transition.rightToLeft,
   ),
   GetPage(

@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "664142919571",
-    "project_id": "private-room-chate",
-    "storage_bucket": "private-room-chate.appspot.com"
+    "project_number": "483803846444",
+    "project_id": "chatee-privatechat",
+    "storage_bucket": "chatee-privatechat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:664142919571:android:0add5846fa2d112d4b9a66",
+        "mobilesdk_app_id": "1:483803846444:android:f910ff28956a973123be89",
         "android_client_info": {
           "package_name": "com.example.chatee"
         }
       },
       "oauth_client": [
         {
-          "client_id": "664142919571-61t2o76rq3hci8djttij0jo3975frj1n.apps.googleusercontent.com",
+          "client_id": "483803846444-bo4pcj5qug8kfmj3ao0n1raghopp6qv2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCi0bxqnVPwZJEcd1JqoW5NZELHqEffPPA"
+          "current_key": "AIzaSyCbFA_gRPwmudkHMgWRF_dFsX1w6Vy1YPQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "664142919571-61t2o76rq3hci8djttij0jo3975frj1n.apps.googleusercontent.com",
+              "client_id": "483803846444-6jc0nc4e3ros0dbmn2q6qpmeskfj791a.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "664142919571-8ll02gt83knikhghuu9l424b5g6tib15.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.chatee.RunnerTests"
-              }
             }
           ]
         }

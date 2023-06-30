@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:664142919571:ios:e4fdf0bb5d3853bf4b9a66",
-  "FIREBASE_PROJECT_ID": "private-room-chate",
-  "GCM_SENDER_ID": "664142919571"
+  "GOOGLE_APP_ID": "1:483803846444:ios:9dcbdec611c73a4d23be89",
+  "FIREBASE_PROJECT_ID": "chatee-privatechat",
+  "GCM_SENDER_ID": "483803846444"
 }

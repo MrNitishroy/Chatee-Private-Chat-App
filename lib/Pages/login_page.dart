@@ -1,11 +1,11 @@
 import 'package:chatee/components/back_button.dart';
-import 'package:chatee/components/button.dart';
 import 'package:chatee/config/colors.dart';
 import 'package:chatee/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
+import '../components/button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -69,6 +69,14 @@ class LoginPage extends StatelessWidget {
                           ),
                   ),
                 ),
+              ),
+              CustomeButton(
+                btnName: "Next",
+                onTap: () {
+                  // authController.signupEmail();
+                  // authController.mobileNumberLogin();
+                  Get.toNamed("/login-with-phone");
+                },
               )
             ],
           ),

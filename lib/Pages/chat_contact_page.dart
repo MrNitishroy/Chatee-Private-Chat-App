@@ -1,3 +1,4 @@
+import 'package:chatee/Pages/new_contact_page.dart';
 import 'package:chatee/components/contact_row.dart';
 import 'package:chatee/components/story.dart';
 import 'package:chatee/config/colors.dart';
@@ -35,7 +36,9 @@ class ChatContactPage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(NewContactPage());
+        },
         backgroundColor: buttonColor,
         child: Icon(
           Icons.message,

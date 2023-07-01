@@ -2,6 +2,7 @@ import 'package:chatee/Pages/new_contact_page.dart';
 import 'package:chatee/components/contact_row.dart';
 import 'package:chatee/components/story.dart';
 import 'package:chatee/config/colors.dart';
+import 'package:chatee/controller/auth_controller.dart';
 import 'package:chatee/data/chat_data.dart';
 import 'package:chatee/data/user_story_data.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class ChatContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DataController dataController = Get.put(DataController());
+    AuthController authController = Get.put(AuthController());
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset(
@@ -26,7 +28,9 @@ class ChatContactPage extends StatelessWidget {
         title: const Text("C H A T E E"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              authController.loginWithMobileNumber();
+            },
             icon: Icon(Icons.search),
             color: lightColor,
           ),

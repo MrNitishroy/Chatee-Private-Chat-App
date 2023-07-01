@@ -71,6 +71,13 @@ class AuthController extends GetxController {
     );
   }
 
+  void otpVerify() {
+    phoneAuthCredential = PhoneAuthProvider.credential(
+      verificationId: '',
+      smsCode: '',
+    );
+  }
+
   void logOut() async {
     await googleSignIn.disconnect();
     await googleSignIn.signOut();

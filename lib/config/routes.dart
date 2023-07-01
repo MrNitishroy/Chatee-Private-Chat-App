@@ -1,4 +1,5 @@
 import 'package:chatee/Pages/chat_contact_page.dart';
+import 'package:chatee/Pages/chat_page.dart';
 import 'package:chatee/Pages/home_page.dart';
 import 'package:chatee/Pages/login_page.dart';
 import 'package:chatee/Pages/login_with_phone.dart';
@@ -20,6 +21,10 @@ var pageRoutes = [
   GetPage(
     name: "/chat-contact-page",
     page: () => const ChatContactPage(),
+  ),
+  GetPage(
+    name: "/chat-page",
+    page: () => const ChatPage(),
   ),
   GetPage(
     name: "/login-page",

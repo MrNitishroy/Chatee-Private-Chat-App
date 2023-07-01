@@ -2,6 +2,7 @@ import 'package:chatee/data/chat_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../components/search_new_user.dart';
 import '../config/colors.dart';
 
 class NewContactPage extends StatelessWidget {
@@ -55,7 +56,9 @@ class NewContactPage extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                SearchNewUser(context);
+              },
               leading: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(

@@ -1,3 +1,5 @@
+import 'package:chatee/models/user_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +11,7 @@ class AuthController extends GetxController {
   PhoneAuthCredential? phoneAuthCredential;
 
   final auth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
   RxBool isLoading = false.obs;
   final googleSignIn = GoogleSignIn();
   GoogleSignInAccount? user;
@@ -30,6 +33,19 @@ class AuthController extends GetxController {
         idToken: googleAuth.idToken,
       );
       UserCredential user = await auth.signInWithCredential(credential);
+      await db.collection("users").doc(auth.currentUser!.uid).set(
+            UserModel(
+              name: user.user!.displayName,
+              email: user.user!.email,
+              profileUrl: user.user!.photoURL,
+              createdAt: DateTime.now().toString(),
+              isOnline: true,
+              isTyping: false,
+              lastSeen: DateTime.now().toString(),
+              bio: "",
+              token: "",
+            ).toJson(),
+          );
       print(user.user!.displayName);
       print(user.user!.email);
       isLoading.value = false;

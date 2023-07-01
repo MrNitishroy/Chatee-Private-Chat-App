@@ -7,6 +7,7 @@ import 'package:chatee/data/user_story_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controller/data_controller.dart';
 import 'chat_page.dart';
 
 class ChatContactPage extends StatelessWidget {
@@ -14,6 +15,7 @@ class ChatContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DataController dataController = Get.put(DataController());
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset(
@@ -99,25 +101,26 @@ class ChatContactPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                children: chatData
-                    .map(
-                      (e) => ContactRow(
-                        onTap: () {
-                          Get.to(ChatPage());
-                        },
-                        name: e.name,
-                        lastMessage: e.lastMessage,
-                        time: e.time,
-                        isOnline: e.isOnline,
-                        isDelivered: e.isDelivered,
-                        isSeen: e.isSeen,
-                        isTyping: e.isTyping,
-                        notificationCount: e.notificationCount,
-                        profileUrl: e.profileUrl,
-                      ),
-                    )
-                    .toList(),
+              child: ListView.builder(
+                itemCount: chatData.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Get.to(ChatPage());
+                    },
+                    child: ContactRow(
+                      name: chatData[index].name,
+                      lastMessage: chatData[index].lastMessage,
+                      time: chatData[index].time,
+                      isOnline: chatData[index].isOnline,
+                      isDelivered: chatData[index].isDelivered,
+                      isSeen: chatData[index].isSeen,
+                      isTyping: chatData[index].isTyping,
+                      notificationCount: chatData[index].notificationCount,
+                      profileUrl: chatData[index].profileUrl,
+                    ),
+                  );
+                },
               ),
             )
           ]),

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Chatee',
-      theme: darkTheme,
+      theme: lightTheme,
       darkTheme: darkTheme,
       getPages: pageRoutes,
       home: SplacePage(),

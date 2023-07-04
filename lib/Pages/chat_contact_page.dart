@@ -97,8 +97,6 @@ class ChatContactPage extends StatelessWidget {
                           ),
                         )
                         .toList(),
-
-                    // ],
                   ),
                 ],
               ),
@@ -110,7 +108,7 @@ class ChatContactPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      Get.to(ChatPage());
+                      Get.toNamed("chat-page");
                     },
                     child: ContactRow(
                       name: chatData[index].name,

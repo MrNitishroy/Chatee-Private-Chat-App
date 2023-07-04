@@ -1,16 +1,24 @@
 import 'package:chatee/components/back_button.dart';
 import 'package:chatee/components/chat_comming_bubble.dart';
 import 'package:chatee/components/chat_going_bubble.dart';
+import 'package:chatee/controller/chat_controller.dart';
+import 'package:chatee/controller/data_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../components/chat_bubble.dart';
 import '../config/colors.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  const ChatPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    ChatController chatController = Get.put(ChatController());
+    DataController dataController = Get.put(DataController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -24,7 +32,7 @@ class ChatPage extends StatelessWidget {
           ),
         ),
         title: InkWell(
-          onTap: (){
+          onTap: () {
             Get.toNamed("/profile-page");
           },
           child: Row(
@@ -33,10 +41,8 @@ class ChatPage extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      "assets/images/profile/profile (1).jpg",
-                    ),
+                  image: DecorationImage(
+                    image: NetworkImage(dataController.profileUrl.value),
                     fit: BoxFit.cover,
                   ),
                   color: lightColor,
@@ -51,7 +57,7 @@ class ChatPage extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                "Saloni Kumari",
+                dataController.user["name"],
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 23,
@@ -75,24 +81,30 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(children: [
         Expanded(
-            child: ListView(
-          children: [
-            ChatCommingBubble(
-                message:
-                    "aj ke bad hm apakse kabhi bat na karenge kyu ki apko meri koi fikar na hai"),
-            ChatGoingBubble(message: "Welcome to chatee app "),
-            ChatGoingBubble(message: "Hello 😮"),
-            ChatCommingBubble(
-                message:
-                    "aj ke bad hm apakse kabhi bat na karenge kyu ki apko meri koi fikar na hai"),
-            ChatGoingBubble(message: "Welcome to chatee app "),
-            ChatGoingBubble(message: "Hello 😮"),
-            ChatCommingBubble(
-                message:
-                    "aj ke bad hm apakse kabhi bat na karenge kyu ki apko meri koi fikar na hai"),
-            ChatGoingBubble(message: "Welcome to chatee app "),
-            ChatGoingBubble(message: "Hello 😮"),
-          ],
+            child: StreamBuilder<QuerySnapshot>(
+          stream: chatController.db
+              .collection('chatRoom')
+              .doc(chatController.roomID.value)
+              .collection("messages")
+              .orderBy("time", descending: false)
+              .snapshots(),
+          // ignore: avoid_types_as_parameter_names
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.data != null) {
+              return ListView.builder(
+                itemCount: snapshot.data?.docs.length,
+                itemBuilder: (context, index) {
+                  return ChatBubble(
+                    message: snapshot.data!.docs[index]["message"],
+                    isMe: snapshot.data!.docs[index]["sender"],
+                  );
+                },
+              );
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
         )),
         Container(
           margin: EdgeInsets.all(10),
@@ -110,6 +122,7 @@ class ChatPage extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
+                  controller: chatController.message,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
                     fontSize: 18,
@@ -123,7 +136,9 @@ class ChatPage extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  chatController.sendMessage();
+                },
                 icon: Icon(Icons.send),
                 color: Theme.of(context).colorScheme.primary,
               ),

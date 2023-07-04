@@ -6,7 +6,7 @@ class DataController extends GetxController {
   final db = FirebaseFirestore.instance;
   TextEditingController emailController = TextEditingController();
   RxBool isSearching = false.obs;
-
+  RxString profileUrl = ''.obs;
   var user = {}.obs;
   void searchUserByEmail() async {
     try {
@@ -14,11 +14,26 @@ class DataController extends GetxController {
       var result = await db
           .collection("users")
           .where("email", isEqualTo: emailController.text)
-          .get();
-      // print(
-      //   result.docs[0].data(),
-      // );
-      user.value = result.docs[0].data();
+          .get()
+          .then(
+            (value) => {
+              if (value.docs.length > 0)
+                {
+                  user.value = value.docs[0].data(),
+                  print(value.docs[0].data()),
+                  profileUrl.value = value.docs[0].data()["profileUrl"],
+                }
+              else
+                {
+                  // Get.snackbar(
+                  //   "Error",
+                  //   "User not found",
+                  //   snackPosition: SnackPosition.BOTTOM,
+                  // ),
+                }
+            },
+          );
+
       isSearching.value = false;
     } catch (ex) {
       print(ex);

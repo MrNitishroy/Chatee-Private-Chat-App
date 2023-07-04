@@ -70,24 +70,50 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Text(
                     authController.auth.currentUser!.displayName!,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   )
                 ],
               ),
               SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                    child: Text(
-                      "Generate Lorem Ipsum placeholder text for use in your graphic, print",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  )
-                ],
+              Obx(
+                () => InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          enabled: profileController.isBioEnabled.value,
+                          controller: profileController.bio,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onBackground,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: 1.0,
+                          ),
+                          maxLines: 10,
+                          minLines: 1,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Add Email",
+                            hintStyle: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          profileController.isBioEnabled.value =
+                              !profileController.isBioEnabled.value;
+                        },
+                        icon: profileController.isBioEnabled.value
+                            ? Icon(Icons.check)
+                            : Icon(Icons.edit),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -96,50 +122,44 @@ class ProfilePage extends StatelessWidget {
                 thickness: 1.5,
               ),
               Container(
-                  // margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Obx(
-                    () => Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.alternate_email_rounded),
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
-                        Expanded(
-                          child: TextFormField(
-                            enabled: profileController.isEmailEnable.value,
-                            controller: profileController.email,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onBackground,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 1.0,
-                            ),
-                            maxLines: 10,
-                            minLines: 1,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Add Email",
-                              hintStyle: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            profileController.onEmailUpdate();
-                          },
-                          icon: profileController.isEmailEnable.value
-                              ? Icon(Icons.done)
-                              : Icon(Icons.edit),
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
-                      ],
+                // margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.alternate_email_rounded),
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
-                  )),
+                    Expanded(
+                      child: TextFormField(
+                        enabled: false,
+                        controller: profileController.email,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 1.0,
+                        ),
+                        maxLines: 10,
+                        minLines: 1,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Add Email",
+                          hintStyle: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.info),
+                    )
+                  ],
+                ),
+              ),
               SizedBox(height: 10),
               Container(
                 // margin: EdgeInsets.all(10),

@@ -1,3 +1,5 @@
+import 'package:chatee/Pages/chat_page.dart';
+import 'package:chatee/controller/chat_controller.dart';
 import 'package:chatee/controller/data_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,7 @@ import 'contact_row.dart';
 
 Future<dynamic> SearchNewUser(BuildContext context) {
   DataController dataController = Get.put(DataController());
+  ChatController chatController = Get.put(ChatController());
   return Get.bottomSheet(Container(
     padding: EdgeInsets.all(20),
     decoration: BoxDecoration(
@@ -42,6 +45,7 @@ Future<dynamic> SearchNewUser(BuildContext context) {
         () => InkWell(
           onTap: () {
             dataController.searchUserByEmail();
+            // chatController.createtChatRoomID();
           },
           child: Container(
             // height: 40,
@@ -58,9 +62,9 @@ Future<dynamic> SearchNewUser(BuildContext context) {
           ),
         ),
       ),
-      SizedBox(height: 10),
+      SizedBox(height: 30),
       Obx(
-        () => dataController.user.value.isNotEmpty
+        () => dataController.user.isNotEmpty
             ? ListTile(
                 leading: Image.network(dataController.user["profileUrl"]),
                 title: Text(
@@ -76,10 +80,16 @@ Future<dynamic> SearchNewUser(BuildContext context) {
                   icon: Icon(Icons.message),
                 ),
                 onTap: () {
-                  Get.toNamed("/chat-page");
+                  chatController.createtChatRoomID(dataController.user["name"]);
+                  Get.toNamed("chat-page");
                 },
               )
-            : Container(),
+            : Container(
+                margin: EdgeInsets.only(top: 20),
+                height: 50,
+                // width: 50,
+                child: Text("No user found"),
+              ),
       )
     ]),
   ));

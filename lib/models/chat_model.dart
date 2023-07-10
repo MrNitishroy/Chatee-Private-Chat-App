@@ -2,6 +2,7 @@
 class ChatModel {
   String? name;
   String? email;
+  String? message;
   String? profileUrl;
   bool? isViewed;
   String? lastMessage;
@@ -12,7 +13,7 @@ class ChatModel {
   bool? isTyping;
   int? notificationCount;
 
-  ChatModel({this.name, this.email, this.profileUrl, this.isViewed, this.lastMessage, this.time, this.isOnline, this.isDelivered, this.isSeen, this.isTyping, this.notificationCount});
+  ChatModel({this.name,this.message, this.email, this.profileUrl, this.isViewed, this.lastMessage, this.time, this.isOnline, this.isDelivered, this.isSeen, this.isTyping, this.notificationCount});
 
   ChatModel.fromJson(Map<String, dynamic> json) {
     name = json["name"];
@@ -20,6 +21,7 @@ class ChatModel {
     profileUrl = json["profileUrl"];
     isViewed = json["isViewed"];
     lastMessage = json["lastMessage"];
+    message = json["message"];
     time = json["time"];
     isOnline = json["isOnline"];
     isDelivered = json["isDelivered"];
@@ -35,6 +37,7 @@ class ChatModel {
     _data["profileUrl"] = profileUrl;
     _data["isViewed"] = isViewed;
     _data["lastMessage"] = lastMessage;
+    _data["message"] = message;
     _data["time"] = time;
     _data["isOnline"] = isOnline;
     _data["isDelivered"] = isDelivered;

@@ -11,8 +11,15 @@ import '../components/chat_bubble.dart';
 import '../config/colors.dart';
 
 class ChatPage extends StatelessWidget {
+  final String name;
+  final String bio;
+  final String profileUrl;
+
   const ChatPage({
     super.key,
+    required this.name,
+    required this.bio,
+    required this.profileUrl,
   });
 
   @override
@@ -24,6 +31,7 @@ class ChatPage extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Get.back();
+            dataController.getAllConnectedUsers();
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -42,7 +50,7 @@ class ChatPage extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(dataController.profileUrl.value),
+                    image: NetworkImage(profileUrl),
                     fit: BoxFit.cover,
                   ),
                   color: lightColor,
@@ -57,7 +65,7 @@ class ChatPage extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                dataController.user["name"],
+                name,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 23,
@@ -83,7 +91,7 @@ class ChatPage extends StatelessWidget {
         Expanded(
             child: StreamBuilder<QuerySnapshot>(
           stream: chatController.db
-              .collection('chatRoom')
+              .collection("UsersChatRoom")
               .doc(chatController.roomID.value)
               .collection("messages")
               .orderBy("time", descending: false)

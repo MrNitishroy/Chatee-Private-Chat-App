@@ -16,13 +16,13 @@ class ContactRow extends StatelessWidget {
   const ContactRow(
       {super.key,
       this.name,
-      this.lastMessage,
+      this.lastMessage = "",
       this.time,
       this.isOnline,
       this.isDelivered,
       this.isSeen,
       this.isTyping,
-      this.notificationCount,
+      this.notificationCount = 0,
       this.profileUrl,
       this.onTap});
 
@@ -39,7 +39,7 @@ class ContactRow extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(profileUrl!),
+                  image: NetworkImage(profileUrl!),
                   fit: BoxFit.cover,
                 ),
                 color: lightColor,
@@ -56,7 +56,7 @@ class ContactRow extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  lastMessage!,
+                  lastMessage.toString(),
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ],
@@ -66,7 +66,7 @@ class ContactRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  time!.toString(),
+                  time.toString(),
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 SizedBox(height: 5),

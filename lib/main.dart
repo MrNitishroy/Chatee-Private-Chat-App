@@ -1,15 +1,10 @@
-import 'package:chatee/Pages/chat_contact_page.dart';
-import 'package:chatee/Pages/user_profile_page.dart';
 import 'package:chatee/Pages/splace_page.dart';
-import 'package:chatee/Pages/welcome_page.dart';
 import 'package:chatee/config/routes.dart';
-import 'package:chatee/controller/splace_controller.dart';
 import 'package:chatee/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'Pages/profile_page.dart';
 import 'config/themes.dart';
 
 void main() async {

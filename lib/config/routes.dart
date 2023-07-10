@@ -22,10 +22,10 @@ var pageRoutes = [
     name: "/chat-contact-page",
     page: () => const ChatContactPage(),
   ),
-  GetPage(
-    name: "/chat-page",
-    page: () => const ChatPage(),
-  ),
+  // GetPage(
+  //   name: "/chat-page",
+  //   page: () => const ChatPage(),
+  // ),
   GetPage(
     name: "/login-page",
     page: () => const LoginPage(),

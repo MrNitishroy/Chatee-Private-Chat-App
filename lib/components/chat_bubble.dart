@@ -1,7 +1,6 @@
 import 'package:chatee/controller/chat_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../config/colors.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -13,7 +12,7 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     ChatController chatController = Get.put(ChatController());
     return Row(
-      mainAxisAlignment: isMe == chatController.auth.currentUser!.displayName
+      mainAxisAlignment: isMe == chatController.auth.currentUser!.email
           ? MainAxisAlignment.end
           : MainAxisAlignment.start,
       children: [
@@ -26,7 +25,7 @@ class ChatBubble extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondaryContainer,
-            borderRadius: isMe == chatController.auth.currentUser!.displayName
+            borderRadius: isMe == chatController.auth.currentUser!.email
                 ? BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),

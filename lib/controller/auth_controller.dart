@@ -44,6 +44,7 @@ class AuthController extends GetxController {
               lastSeen: DateTime.now().toString(),
               bio: "",
               token: "",
+              lastMessage: "",
             ).toJson(),
           );
       print(user.user!.displayName);

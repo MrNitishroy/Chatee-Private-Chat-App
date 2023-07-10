@@ -3,8 +3,11 @@ import 'package:chatee/components/contact_row.dart';
 import 'package:chatee/components/story.dart';
 import 'package:chatee/config/colors.dart';
 import 'package:chatee/controller/auth_controller.dart';
+import 'package:chatee/controller/chat_controller.dart';
+import 'package:chatee/controller/story_controller.dart';
 import 'package:chatee/data/chat_data.dart';
 import 'package:chatee/data/user_story_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +21,8 @@ class ChatContactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     DataController dataController = Get.put(DataController());
     AuthController authController = Get.put(AuthController());
+    ChatController chatController = Get.put(ChatController());
+    StoryController storyController = Get.put(StoryController());
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset(
@@ -45,6 +50,7 @@ class ChatContactPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          dataController.getAllUsers();
           Get.to(NewContactPage());
         },
         backgroundColor: buttonColor,
@@ -64,27 +70,32 @@ class ChatContactPage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: lightColor,
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(
-                              width: 1.3,
-                              color: buttonColor,
+                    child: InkWell(
+                      onTap: () {
+                        storyController.pickImage();
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 60,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: lightColor,
+                              borderRadius: BorderRadius.circular(100),
+                              border: Border.all(
+                                width: 1.3,
+                                color: buttonColor,
+                              ),
                             ),
+                            child: Icon(Icons.add),
                           ),
-                          child: Icon(Icons.add),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "Add story",
-                          style: Theme.of(context).textTheme.labelSmall,
-                        )
-                      ],
+                          SizedBox(height: 5),
+                          Text(
+                            "Add story",
+                            style: Theme.of(context).textTheme.labelSmall,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Row(
@@ -102,28 +113,38 @@ class ChatContactPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: chatData.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      Get.toNamed("chat-page");
-                    },
-                    child: ContactRow(
-                      name: chatData[index].name,
-                      lastMessage: chatData[index].lastMessage,
-                      time: chatData[index].time,
-                      isOnline: chatData[index].isOnline,
-                      isDelivered: chatData[index].isDelivered,
-                      isSeen: chatData[index].isSeen,
-                      isTyping: chatData[index].isTyping,
-                      notificationCount: chatData[index].notificationCount,
-                      profileUrl: chatData[index].profileUrl,
-                    ),
-                  );
-                },
-              ),
+            Obx(
+              () => Expanded(
+                  child: Column(
+                children: dataController.allConnectedUsers.value
+                    .map(
+                      (e) => InkWell(
+                        onTap: () {
+                          if (e != null) {
+                            dataController.user.value = e;
+                          }
+                          chatController.createtChatRoomID(e["email"]);
+                          Get.to(ChatPage(
+                            name: e["name"],
+                            profileUrl: e["profileUrl"],
+                            bio: e["bio"],
+                          ));
+                        },
+                        child: ContactRow(
+                          name: e["name"],
+                          lastMessage: e["lastMessage"],
+                          time: e["time"],
+                          isOnline: e["isOnline"],
+                          isDelivered: e["isDelivered"],
+                          isSeen: e["isSeen"],
+                          isTyping: e["isTyping"],
+                          notificationCount: e["notificationCount"],
+                          profileUrl: e["profileUrl"],
+                        ),
+                      ),
+                    )
+                    .toList(),
+              )),
             )
           ]),
         ),
@@ -131,3 +152,36 @@ class ChatContactPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+// InkWell(
+//                               onTap: () {
+//                                 Get.to(ChatPage(
+//                                   name: snapshot.data!.docs[index]["name"],
+//                                   profileUrl: snapshot.data!.docs[index]
+//                                       ["profileUrl"],
+//                                   bio: snapshot.data!.docs[index]["bio"],
+//                                 ));
+//                               },
+//                               child: ContactRow(
+//                                 name: snapshot.data!.docs[index]["name"],
+//                                 lastMessage: snapshot.data!.docs[index]
+//                                     ["lastMessage"],
+//                                 time: snapshot.data!.docs[index]["time"],
+//                                 isOnline: snapshot.data!.docs[index]
+//                                     ["isOnline"],
+//                                 isDelivered: snapshot.data!.docs[index]
+//                                     ["isDelivered"],
+//                                 isSeen: snapshot.data!.docs[index]["isSeen"],
+//                                 isTyping: snapshot.data!.docs[index]
+//                                     ["isTyping"],
+//                                 notificationCount: snapshot.data!.docs[index]
+//                                     ["notificationCount"],
+//                                 profileUrl: snapshot.data!.docs[index]
+//                                     ["profileUrl"],
+//                               ),
+//                             );

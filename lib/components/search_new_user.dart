@@ -4,9 +4,7 @@ import 'package:chatee/controller/data_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../config/colors.dart';
-import 'contact_row.dart';
 
 Future<dynamic> SearchNewUser(BuildContext context) {
   DataController dataController = Get.put(DataController());
@@ -80,8 +78,14 @@ Future<dynamic> SearchNewUser(BuildContext context) {
                   icon: Icon(Icons.message),
                 ),
                 onTap: () {
-                  chatController.createtChatRoomID(dataController.user["name"]);
-                  Get.toNamed("chat-page");
+                  chatController.createtChatRoomID(dataController.user["email"]);
+                  Get.to(
+                    ChatPage(
+                      name: dataController.user["name"],
+                      bio: dataController.user['bio'],
+                      profileUrl: dataController.user['profileUrl'],
+                    ),
+                  );
                 },
               )
             : Container(

@@ -1,4 +1,5 @@
 import 'package:chatee/Pages/splace_page.dart';
+import 'package:chatee/Pages/story_page.dart';
 import 'package:chatee/config/routes.dart';
 import 'package:chatee/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,7 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-    print('-- main: Firebase.initializeApp');
+  print('-- main: Firebase.initializeApp');
   runApp(const MyApp());
 }
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme,
       getPages: pageRoutes,
       home: SplacePage(),
+      // home: StoryPage(),
       // home: const ProfilePage(),
       // home: const ChatContactPage(),
     );

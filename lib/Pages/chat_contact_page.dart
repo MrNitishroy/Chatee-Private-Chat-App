@@ -34,7 +34,8 @@ class ChatContactPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              authController.loginWithMobileNumber();
+              // authController.loginWithMobileNumber();
+              storyController.getAllStory();
             },
             icon: Icon(Icons.search),
             color: lightColor,
@@ -98,17 +99,19 @@ class ChatContactPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    children: storyData
-                        .map(
-                          (e) => StoryWidget(
-                            name: e.useName,
-                            isViewed: e.isViewed,
-                            profileUrl: e.profileUrl!,
-                          ),
-                        )
-                        .toList(),
-                  ),
+                  Obx(
+                    () => Row(
+                      children: storyController.storys
+                          .map(
+                            (e) => StoryWidget(
+                              name: e.name,
+                              isViewed: false,
+                              profileUrl: e.profileUrl,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  )
                 ],
               ),
             ),

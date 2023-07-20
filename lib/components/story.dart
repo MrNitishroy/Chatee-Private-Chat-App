@@ -5,12 +5,13 @@ import '../config/colors.dart';
 class StoryWidget extends StatelessWidget {
   final String? name;
   final bool? isViewed;
-  final String profileUrl;
+  final String? profileUrl;
   const StoryWidget({
     super.key,
     this.name,
     this.isViewed,
-    required this.profileUrl,
+    this.profileUrl =
+        "https://th.bing.com/th/id/OIP.Rjs9v9RuobrZmBIA-X6FpQHaHl?pid=ImgDet&rs=1",
   });
 
   @override
@@ -26,7 +27,7 @@ class StoryWidget extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(profileUrl!),
+                  image: NetworkImage(profileUrl!),
                   fit: BoxFit.cover,
                 ),
                 color: lightColor,

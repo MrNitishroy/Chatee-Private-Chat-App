@@ -4,6 +4,7 @@ import 'package:chatee/Pages/home_page.dart';
 import 'package:chatee/Pages/login_page.dart';
 import 'package:chatee/Pages/login_with_phone.dart';
 import 'package:chatee/Pages/profile_page.dart';
+import 'package:chatee/Pages/story_page.dart';
 import 'package:chatee/Pages/user_profile_page.dart';
 import 'package:chatee/Pages/verify_otp_page.dart';
 import 'package:chatee/Pages/welcome_page.dart';
@@ -50,5 +51,10 @@ var pageRoutes = [
     name: "/profile-page",
     page: () => const ProfilePage(),
     transition: Transition.rightToLeft,
+  ),
+  GetPage(
+    name: "/story-page",
+    page: () => const StoryPage(),
+    transition: Transition.fade,
   ),
 ];
